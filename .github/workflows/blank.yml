@@ -1,0 +1,23 @@
+name: actions_on_main_branch
+on: 
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    branches:    
+      - 'main'
+
+jobs:
+  job1:
+    name: enforce_merge
+    runs-on: ubuntu-latest
+#    env:
+#      NAME_ADMIN: adminA
+    steps:
+      - name: check branch
+        if: ${{ $GITHUB_HEAD_REF == "develop" && $GITHUB_BASE_REF" == "master" }}
+        run: echo "Able to merge"
+      - name: st2
+        if: ! ${{ $GITHUB_HEAD_REF == "develop" && $GITHUB_BASE_REF" == "master" }}
+        run: exit 2
