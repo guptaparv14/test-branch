@@ -22,7 +22,7 @@ jobs:
         run: |
           if [[ ! ( \
             "$GITHUB_HEAD_REF" == "development" \
-            && "$GITHUB_BASE_REF" == "master"
+            && "$GITHUB_BASE_REF" == "main"
           ) ]]; then
             exit 2
           fi
