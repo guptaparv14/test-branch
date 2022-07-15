@@ -25,4 +25,5 @@ jobs:
             && "$GITHUB_BASE_REF" == "main"
           ) ]]; then
             echo "Cannot merge $GITHUB_HEAD_REF to $GITHUB_BASE_REF"
+            exit 2
           fi
