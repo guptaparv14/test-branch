@@ -18,3 +18,11 @@ jobs:
 #       - name: st2
 #         if: ! ${{ $GITHUB_HEAD_REF == "develop" && $GITHUB_BASE_REF" == "master" }}
 #         run: exit 2
+      - name: Branch checks
+        run: |
+          if [[ ! ( \
+            "$GITHUB_HEAD_REF" == "development" \
+            && "$GITHUB_BASE_REF" == "master"
+          ) ]]; then
+            exit 2
+          fi
