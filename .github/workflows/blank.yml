@@ -12,18 +12,12 @@ jobs:
         run: |
           echo "Head Ref: $GITHUB_HEAD_REF"
           echo "Base Ref: $GITHUB_BASE_REF"
-#       - name: check branch
-#         if: ${{ $GITHUB_HEAD_REF == "develop" && $GITHUB_BASE_REF" == "master" }}
-#         run: echo "Able to merge"
-#       - name: st2
-#         if: ! ${{ $GITHUB_HEAD_REF == "develop" && $GITHUB_BASE_REF" == "master" }}
-#         run: exit 2
       - name: Branch checks
         run: |
           if [[ ! ( \
             "$GITHUB_HEAD_REF" == "develop" \
             && "$GITHUB_BASE_REF" == "main"
           ) ]]; then
-            echo "Cannot merge $GITHUB_HEAD_REF to $GITHUB_BASE_REF"
+            echo "Cannot merge $GITHUB_HEAD_REF branch to $GITHUB_BASE_REF branch"
             exit 2
           fi
